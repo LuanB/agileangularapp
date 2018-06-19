@@ -1,0 +1,74 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+
+
+  <mat-grid-list cols="2" rowHeight="350px">
+
+    <mat-card class='dashboard-card'>
+
+      <mat-card-title class='dashboardheadings'>Product Backlog</mat-card-title>
+      <mat-card-content class="dashboard-card-content">
+
+        <productbacklog></productbacklog>
+
+      </mat-card-content>
+
+
+
+    </mat-card>
+
+
+
+  </mat-grid-list>
+
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Velocity Chart
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Velocity Chart</div>
+          <app-velocitychart></app-velocitychart>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Current Sprint Status
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Sprint Status</div>
+          <sprintstatus></sprintstatus>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+
+</div>

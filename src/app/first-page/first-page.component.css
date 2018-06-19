@@ -1,0 +1,18 @@
+.example-card {
+  max-width: 400px;
+}
+
+.tony-header-image {
+  background-image: url("/assets/TonyProductManager.jpeg");
+  background-size: cover;
+}
+
+.james-header-image {
+  background-image: url("/assets/JamesProfile.jpeg");
+  background-size: cover;
+}
+
+.ro-header-image {
+  background-image: url("/assets/RoProfile.jpeg");
+  background-size: cover;
+}

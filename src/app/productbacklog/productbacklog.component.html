@@ -1,0 +1,24 @@
+<table class="mat-table mat-elevation-z8">
+  <thead>
+    <tr class="mat-header-row">
+      <th class="mat-header-cell"> Task Name </th>
+      <th class="mat-header-cell"> Sprint Ready </th>
+      <th class="mat-header-cell"> Status </th>
+      <th class="mat-header-cell"> Story Points </th>
+      <th class="mat-header-cell"> Assigned to Sprint </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="mat-row" *ngFor="let backlog of backlogs">
+      <td class="mat-cell"> {{backlog.taskname}} </td>
+      <td class="mat-cell"> {{backlog.sprintready}} </td>
+      <td class="mat-cell"> {{backlog.status}} </td>
+      <td class="mat-cell"> {{backlog.storypoints}} </td>
+      <td class="mat-cell"> {{backlog.assigned}} </td>
+    </tr>
+  </tbody>
+</table>
+<div></div>
+<p></p>
+<p></p>
+<button>Add sprint backlog</button>
