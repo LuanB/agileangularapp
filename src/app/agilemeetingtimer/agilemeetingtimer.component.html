@@ -1,36 +1,44 @@
-<h1>Agile Meeting Timer</h1>
+<div class="timercontainer">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Agile Meeting Timer</h1>
 
 
-<div class="progress-wrapper" *ngIf="maxVal">
+      <div class="progress-wrapper" *ngIf="maxVal">
 
-  <div class="text" *ngIf="!isFinished">
-    Time remaining is: {{ max - current | number: '1.1-1' }} minutes.
+        <div class="text" *ngIf="!isFinished">
+          Time remaining is: {{ max - current | number: '1.1-1' }} minutes.
+        </div>
+
+        <div class="text" *ngIf="isFinished">
+          ding!
+          <audio src="assets/chime.mp3" autoplay></audio>
+        </div>
+
+        <round-progress [max]="max" [current]="current" [radius]="100" [stroke]="25">
+        </round-progress>
+
+      </div>
+
+      <div class="controls-wrapper">
+
+        <div>
+          <label>Minutes</label>
+          <input class="input" placeholder="number of Minutes for Standup Meeting" type="text" [(ngModel)]="max" (keydown)="reset()">
+        </div>
+
+        <!-- <button class="button is-info" *ngIf="currentVal <= 0" (click)="start()">Start</button> -->
+        <button class="button is-info" (click)="startInterval()" id='startbtn'>Start</button>
+
+        <button class="button is-danger" *ngIf="!isFinished" (click)="finish()">Finish</button>
+
+
+
+
+
+      </div>
+
+    </div>
   </div>
-
-  <div class="text" *ngIf="isFinished">
-    ding!
-    <audio src="assets/chime.mp3" autoplay></audio>
-  </div>
-
-  <round-progress [max]="max" [current]="current" [radius]="100" [stroke]="25">
-  </round-progress>
-
-</div>
-
-<div class="controls-wrapper">
-
-  <div>
-    <label>Minutes</label>
-    <input class="input" placeholder="number of Minutes for Standup Meeting" type="text" [(ngModel)]="max" (keydown)="reset()">
-  </div>
-
-  <!-- <button class="button is-info" *ngIf="currentVal <= 0" (click)="start()">Start</button> -->
-  <button class="button is-info" (click)="startInterval()" id='startbtn'>Start</button>
-
-  <button class="button is-danger" *ngIf="!isFinished" (click)="finish()">Finish</button>
-
-
-
-
 
 </div>
