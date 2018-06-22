@@ -30,6 +30,7 @@ import { AgilemeetingtimerComponent } from "./agilemeetingtimer/agilemeetingtime
 //import { RoundProgressModule } from "angular-svg-round-progressbar";
 import { ToastrComponent } from "./toastr/toastr.component";
 import { RoundProgressModule } from "angular-svg-round-progressbar";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 const appRoutes: Routes = [
   { path: "ProjectSeniorTeam", component: FirstPageComponent },
   { path: "ProjectDetails", component: SecondPageComponent },
@@ -67,7 +68,9 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatMenuModule,
     MatTableModule,
-    RoundProgressModule
+    RoundProgressModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

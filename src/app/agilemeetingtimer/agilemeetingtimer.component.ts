@@ -1,48 +1,54 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  EventEmitter,
+  ElementRef
+} from "@angular/core";
 //import { ToastrService } from "ngx-toastr";
-import { Observable, interval, fromEvent } from "rxjs";
+import { Observable, interval, fromEvent, pipe } from "rxjs";
 import { takeWhile, tap, switchMap, mapTo } from "rxjs/operators";
 //import { ToastrComponent } from "../toastr/toastr.component";
 // import { NgModule } from "@angular/core";
 import { RoundProgressModule } from "angular-svg-round-progressbar";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "agilemeetingtimer",
   templateUrl: "./agilemeetingtimer.component.html",
   styleUrls: ["./agilemeetingtimer.component.css"]
 })
-export class AgilemeetingtimerComponent implements OnInit {
+export class AgilemeetingtimerComponent implements OnInit, AfterViewInit {
   max = 1;
   current = 0;
   //  toast: ToastrComponent;
 
-  //constructor(private tostr: ToastrService) {}
-  constructor() {}
+  // .pipe(takeWhile(_ => !this.isFinished), tap(i => (this.current += 0.00167)))
+  // .subscribe();
+
+  // swtich map funtion to all reset of timer when user clicks start btn again. Pipe is needed in Angular 6.
+  constructor(private elementRef: ElementRef) {}
   ngOnInit() {}
+  ngAfterViewInit() {
+    const StartBtnClickObs1 = fromEvent(
+      document.getElementById("startbtn"),
+      "click"
+    );
 
-  start() {
-    const myinterval = interval(100)
-      .pipe(
-        takeWhile(_ => !this.isFinished),
-        tap(i => (this.current += 0.00167))
-      )
-      .subscribe();
+    const intervalObs2 = interval(100).pipe(
+      takeWhile(_ => !this.isFinished),
+      tap(i => (this.current += 0.00167))
+    );
 
-    //   const myelement = document.getElementById("my-element");
-    //
-    //   //(click)...3s...'Hello I made it!'...(click)...2s(click)...
-    //   const source = fromEvent(myelement, "click");
-    //   const subscribe = source.subscribe(val => {
-    //     this.tostr.success(
-    //       "Daily Agile Meeting Scrum",
-    //       "agileQuestions[curNewsIndex]"
-    //     );
-    //     //   this.tostr.success(
-    //     //     "Daily Agile Meeting Scrum",
-    //     //     "agileQuestions[curNewsIndex]"
-    //     //   );
-    //     // }
-    //   });
+    StartBtnClickObs1.pipe(switchMap(event => intervalObs2)).subscribe(x =>
+      console.log(this.current)
+    );
+  }
+
+  startInterval() {
+    this.current = 0;
+
+    //const myinterval = interval(100);
   }
 
   finish() {

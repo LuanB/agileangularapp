@@ -1,14 +1,10 @@
-<p>
-  agilemeetingtimer works!
-</p>
+<h1>Agile Meeting Timer</h1>
 
-
-<h1>Electron Timer</h1>
 
 <div class="progress-wrapper" *ngIf="maxVal">
 
   <div class="text" *ngIf="!isFinished">
-    {{ max - current | number: '1.1-1' }}
+    Time remaining is: {{ max - current | number: '1.1-1' }} minutes.
   </div>
 
   <div class="text" *ngIf="isFinished">
@@ -21,12 +17,20 @@
 
 </div>
 
-<!-- <div class="controls-wrapper">
+<div class="controls-wrapper">
 
-  <label>Seconds</label>
-  <input class="input" placeholder="number of seconds" type="text" [(ngModel)]="max" (keydown)="reset()">
+  <div>
+    <label>Minutes</label>
+    <input class="input" placeholder="number of Minutes for Standup Meeting" type="text" [(ngModel)]="max" (keydown)="reset()">
+  </div>
+
+  <!-- <button class="button is-info" *ngIf="currentVal <= 0" (click)="start()">Start</button> -->
+  <button class="button is-info" (click)="startInterval()" id='startbtn'>Start</button>
+
+  <button class="button is-danger" *ngIf="!isFinished" (click)="finish()">Finish</button>
 
 
-  <button *ngIf="currentVal <= 0" (click)="start()">Start</button>
-  <button *ngIf="!isFinished" (click)="finish()">Finish</button>
-</div> -->
+
+
+
+</div>
